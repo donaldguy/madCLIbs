@@ -4,6 +4,10 @@ Seeks to mimic the familiar UX of HTML5 form elements, with
 [placeholders](http://diveintohtml5.info/forms.html#placeholder),
 in the terminal.
 
+Allows a program to present a line with one or more "blanks" which can be edited and moved between
+at will (with tab or up & down arrow keys). On new line, returns the values of the blanks (treating
+placeholders as a default values)
+
 The name is supposed to be Mad Libs with a CLI in it, but you might also
 reasonably call it "Mad CLI BS" :smile:
 

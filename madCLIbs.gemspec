@@ -9,6 +9,14 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Donald Guy"]
   spec.email         = ["fawkes@mit.edu"]
   spec.summary       = %q{User-friendly fill-in-the-blank CLI forms (think HTML5 with placeholders) }
+  spec.description   = <<-EOS
+  Seeks to mimic the familiar UX of HTML5 form elements, with placeholder attributes,
+  in an ANSI-compatible terminal.
+
+  Allows a program to present a line with one or more "blanks" which can be edited and moved between
+  at will (with tab or up & down arrow keys). On new line, returns the values of the blanks (treating
+  placeholders as a default values if no editing occured)
+  EOS
   spec.homepage      = "https://github.com/donaldguy/madCLIbs"
   spec.license       = "MIT"
 
@@ -17,9 +25,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "term-ansicolor"
-  spec.add_dependency "activesupport"
+  spec.add_dependency "term-ansicolor", "~> 1.1"
+  spec.add_dependency "activesupport", "~> 3"
 
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "bundler", "~> 1.6"
 end
