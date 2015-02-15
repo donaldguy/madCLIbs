@@ -12,7 +12,6 @@ module IOHelper
   @rendered = ""
 
   KEYS = {
-    " " => "space",
     "\t" => "tab",
     "\r" => "return",
     "\n" => "linefeed",
@@ -88,15 +87,16 @@ module IOHelper
   end
 
   # Render a text to the prompt
-  def render prompt
-    @rendered = prompt
-    print prompt
+  def render(s)
+    @rendered = s
+    print s
+    print char_left
   end
 
   # Clear the prompt and render the update
-  def rerender prompt
+  def rerender(s)
     clear
-    render prompt
+    render s
   end
 
   # clear the console based on the last text rendered

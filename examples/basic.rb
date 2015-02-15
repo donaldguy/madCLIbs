@@ -1,5 +1,6 @@
 require 'madCLIbs/import'
 
-name = prompt("My name is ", string(ENV['USER']))
 
-puts "Your name is #{name}"
+name, food = prompt("My name is", string(ENV['USER']), "and I like", string("chicken") )
+
+puts "Your name is #{name} and you like #{food}"
