@@ -20,7 +20,7 @@ class MadClibs
         @valuebuff.left
       when "right"
         @valuebuff.right
-      when /[\w\s]/
+      when /./
         @valuebuff << key
       else
         raise ArgumentError, "No handler for key '#{key}' (while focused on this blank)"

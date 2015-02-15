@@ -26,9 +26,11 @@ class MadClibs
       end
 
       def save_and_remove_color(s)
+        @color_seed ||= '%{value}'
         colored = s
         uncolored = uncolor(s)
-        @color_seed = colored.sub(%r'#{uncolored}', '%{value}')
+        new_color_seed = colored.sub(%r'#{uncolored}', '%{value}')
+        @color_seed = new_color_seed % {value: @color_seed}
         uncolored
       end
 
