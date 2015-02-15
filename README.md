@@ -1,12 +1,14 @@
 # MadCLI</tt>bs:<br> User-Friendly Fill-in-the-Blank(s) UX for your Terminal Application
+[![Gem Version](https://badge.fury.io/rb/madCLIbs.svg)](http://badge.fury.io/rb/madCLIbs) [![Code Climate](https://codeclimate.com/github/donaldguy/madCLIbs/badges/gpa.svg)](https://codeclimate.com/github/donaldguy/madCLIbs) [![Dependency Status](https://gemnasium.com/donaldguy/madCLIbs.svg)](https://gemnasium.com/donaldguy/madCLIbs)
+
 
 Seeks to mimic the familiar UX of HTML5 form elements, with
 [placeholders](http://diveintohtml5.info/forms.html#placeholder),
 in the terminal.
 
 Allows a program to present a line with one or more "blanks" which can be edited and moved between
-at will (with tab or up & down arrow keys). On new line, returns the values of the blanks (treating
-placeholders as a default values)
+at will (with `Tab` or :arrow_up: & :arrow_down: keys). On `Return`/new line, returns the values of the blanks (treating
+placeholders as a default values if no editing occured)
 
 The name is supposed to be Mad Libs with a CLI in it, but you might also
 reasonably call it "Mad CLI BS" :smile:
