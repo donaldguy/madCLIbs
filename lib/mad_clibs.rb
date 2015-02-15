@@ -1,9 +1,7 @@
-require 'mad_clibs/autoload'
-
 class MadClibs
-  extend MadClibs::Autoload
-
-  autoload :Blanks, :Line, :Prompter
+  autoload :Line, 'mad_clibs/line'
+  autoload :Blanks, 'mad_clibs/blanks'
+  autoload :Prompter, 'mad_clibs/prompter'
 
   def initialize()
     @prompter = Prompter.new

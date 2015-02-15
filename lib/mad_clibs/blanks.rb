@@ -1,5 +1,3 @@
 module MadClibs::Blanks
-  extend MadClibs::Autoload
-
-  autoload :String
+  autoload :String, 'mad_clibs/blanks/string'
 end

@@ -1,3 +1,4 @@
+require 'forwardable'
 require_relative '../madCLIbs'
 
 $MADCLIBS = MadCLIbs.new()
