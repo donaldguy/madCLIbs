@@ -15,7 +15,7 @@ module IOHelper
     "\t" => "tab",
     "\r" => "return",
     "\n" => "linefeed",
-    "\e" => "escape",
+#    "\e" => "escape",
     "\e[A" => "up",
     "\e[B" => "down",
     "\e[C" => "right",
@@ -90,7 +90,6 @@ module IOHelper
   def render(s)
     @rendered = s
     print s
-    print char_left
   end
 
   # Clear the prompt and render the update

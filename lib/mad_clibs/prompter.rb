@@ -12,10 +12,11 @@ class MadClibs
       reinit
       @tokens = line.instance_variable_get(:@tokens)
       @blanks = line.instance_variable_get(:@blanks)
-      @it_blank = @blanks.each
+      @current_blank_index = 0
 
       until done?
         render
+        place_cursor
         getc
       end
 
@@ -53,19 +54,28 @@ private
     def getc
       @last_char = @io.read_key
       case @last_char
-      when "tab"
+      when "up"
+        previous_blank!
+      when "tab", "down"
         #if @active_blank.has_completions?
         #end
-        begin
-          @it_blank.next
-          @it_blank.peek
-        rescue StopIteration
-          @it_blank.rewind
-        end
+        next_blank!
       when "return", "linefeed"
         @last_char = "return"
       else
-        @it_blank.peek.key(@last_char)
+        active_blank.key(@last_char)
+      end
+    end
+
+    def place_cursor
+      print @io.carriage_return
+
+      @tokens.each do |t|
+        if t == active_blank
+          print @io.char_right*t.position
+          break
+        end
+        print @io.char_right*(t.length+1) # + 1 for space
       end
     end
 
@@ -75,6 +85,20 @@ private
       end
       render
       puts ""
+    end
+
+    def next_blank!
+      @current_blank_index += 1
+      @current_blank_index = 0 if @current_blank_index >= @blanks.length
+    end
+
+    def previous_blank!
+      @current_blank_index -= 1
+      @current_blank_index = @blanks.length - 1 if @current_blank_index < 0
+    end
+
+    def active_blank
+      @blanks[@current_blank_index]
     end
   end
 end

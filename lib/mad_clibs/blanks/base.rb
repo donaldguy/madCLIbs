@@ -23,6 +23,10 @@ class MadClibs::Blanks::Base
     @valuebuff.value = v
   end
 
+  def position
+    @valuebuff.position > 0 ? @valuebuff.position : 0
+  end
+
   def length
     self.value.length
   end
@@ -32,9 +36,7 @@ class MadClibs::Blanks::Base
   end
 
   def key(key)
-    @placeholder_showing = true unless defined? @placeholder_showing
-
-    if @placeholder_showing
+    if placeholder_showing?
       default_key_placeholder_showing(key)
     else #no placeholder showing
       default_key_no_placeholder(key)
@@ -42,6 +44,11 @@ class MadClibs::Blanks::Base
   end
 
   protected
+    def placeholder_showing?
+      @placeholder_showing = true unless defined? @placeholder_showing
+      @placeholder_showing
+    end
+
     def default_key_placeholder_showing(key)
       case key
       when"backspace"
@@ -55,7 +62,8 @@ class MadClibs::Blanks::Base
       when "left", "right"
         #ignore it
       else # normal character -> start writing in
-        self.value = key
+        self.value = ""
+        @valuebuff << key
         @placeholder_showing = false
       end
     end
