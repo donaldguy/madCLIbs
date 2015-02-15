@@ -1,5 +1,6 @@
 require_relative 'util/iohelper'
 require 'stringio'
+require 'term/ansicolor'
 
 class MadClibs
   class Prompter
@@ -75,7 +76,7 @@ private
           print @io.char_right*t.position
           break
         end
-        print @io.char_right*(t.length+1) # + 1 for space
+        print @io.char_right*(Term::ANSIColor.uncolored(t).length+1) # + 1 for space
       end
     end
 

@@ -1,19 +1,23 @@
 require_relative 'base'
-require_relative '../util/value_buffer'
+require_relative 'mixins/value_buffer_delegate'
 
 class MadClibs
-  class Blanks::String < Blanks::Base
-    def initialize(s)
-      @start_value = s.to_s
-      @completions = nil
-    end
+  module Blanks
+    class String < Base
+      include Mixins::ValueBufferDelegate
 
-    def render
-      value
-    end
+      def initialize(s)
+        @start_value = s.to_s
+        @completions = nil
+      end
 
-    def valid?
-      !empty?
+      def render
+        restore_color(value)
+      end
+
+      def valid?
+        !empty?
+      end
     end
   end
 end
