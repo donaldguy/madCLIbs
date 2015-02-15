@@ -6,9 +6,8 @@ Seeks to mimic the familiar UX of HTML5 form elements, with
 [placeholders](http://diveintohtml5.info/forms.html#placeholder),
 in the terminal.
 
-Allows a program to present a line with one or more "blanks" which can be edited and moved between
-at will (with `Tab` or :arrow_up: & :arrow_down: keys). On `Return`/new line, returns the values of the blanks (treating
-placeholders as a default values if no editing occured)
+Allows a program to present a line with one or more "blanks" which can be edited and cycled between
+at will (with `Tab` & `Shift-Tab` or :arrow_up: & :arrow_down: keys). On `Return`/new line, returns the values of the blanks (treating placeholders as a default values if no editing occured)
 
 The name is supposed to be Mad Libs with a CLI in it, but you might also
 reasonably call it "Mad CLI BS" :smile:
@@ -19,7 +18,11 @@ pretty useful for things like [Dramaturg](https://github.com/donaldguy/dramaturg
 
 ## Usage
 
-See [examples](https://github.com/donaldguy/madCLIbs/tree/master/examples)
+See [examples](https://github.com/donaldguy/madCLIbs/tree/master/examples) for example code
+
+Here's a quick UX demo
+
+![Demo Gif](http://g.recordit.co/igWkgeP8wM.gif)
 
 ## Contributing
 

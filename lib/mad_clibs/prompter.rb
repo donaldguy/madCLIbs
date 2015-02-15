@@ -55,7 +55,7 @@ private
     def getc
       @last_char = @io.read_key
       case @last_char
-      when "up"
+      when "up", "shift-tab"
         previous_blank!
       when "tab", "down"
         #if @active_blank.has_completions?

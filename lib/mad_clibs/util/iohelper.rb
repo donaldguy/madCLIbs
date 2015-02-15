@@ -13,6 +13,7 @@ module IOHelper
 
   KEYS = {
     "\t" => "tab",
+    "\e[Z" => "shift-tab",
     "\r" => "return",
     "\n" => "linefeed",
 #    "\e" => "escape",

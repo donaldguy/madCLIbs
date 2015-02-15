@@ -3,6 +3,12 @@ require 'term/ansicolor'
 
 include Term::ANSIColor
 
-name, food = prompt("My name is", cyan(bold(string(ENV['USER']))), "and I like", bold(string("chicken")) )
+name, food, side = prompt("My name is",
+                    cyan(bold(string(ENV['USER']))),
+                    "and I like",
+                    bold(string("chicken")),
+                    "with",
+                    string(green("rice"))
+                   )
 
-puts "Your name is #{name} and you like #{food}"
+puts "Your name is #{name} and you like #{food} with #{side}"
