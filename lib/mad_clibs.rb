@@ -3,14 +3,20 @@ class MadClibs
   autoload :Blanks, 'mad_clibs/blanks'
   autoload :Prompter, 'mad_clibs/prompter'
 
-  def initialize()
-    @prompter = Prompter.new
+  attr_accessor :interrupt_handler
+
+  def initialize(config = {})
+    @prompter = Prompter.new(self)
+    @interrupt_handler = config[:interrupt_handler]
+    @interrupt_handler ||= ->() { raise Interrupt }
   end
 
   def prompt(*args)
     l = Line.new(*args)
-    @prompter.prompt(l)
-    l.values()
+    catch :escape do
+      @prompter.prompt(l)
+      l.values()
+    end
   end
 
   def string(val)

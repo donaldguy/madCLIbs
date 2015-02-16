@@ -4,7 +4,8 @@ require 'term/ansicolor'
 
 class MadClibs
   class Prompter
-    def initialize
+    def initialize(controller)
+      @controller = controller
       @io = IOHelper
       reinit
     end
@@ -53,7 +54,7 @@ private
     end
 
     def getc
-      @last_char = @io.read_key
+      @last_char = @io.read_key(false)
       case @last_char
       when "up", "shift-tab"
         previous_blank!
@@ -63,6 +64,9 @@ private
         next_blank!
       when "return", "linefeed"
         @last_char = "return"
+      when "ctrl-c", "ctrl-d"
+        continue = @controller.interrupt_handler.()
+        throw :escape unless continue
       else
         active_blank.key(@last_char)
       end

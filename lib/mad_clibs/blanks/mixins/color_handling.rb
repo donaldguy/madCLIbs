@@ -29,7 +29,7 @@ class MadClibs
         @color_seed ||= '%{value}'
         colored = s
         uncolored = uncolor(s)
-        new_color_seed = colored.sub(%r'#{uncolored}', '%{value}')
+        new_color_seed = colored.sub(uncolored, '%{value}')
         @color_seed = new_color_seed % {value: @color_seed}
         uncolored
       end
