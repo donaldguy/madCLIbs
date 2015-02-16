@@ -40,17 +40,27 @@ private
     def render
       buffer = StringIO.new
 
-      @tokens.each do |token|
+      @tokens.length.times do |i|
+        token = @tokens[i]
         if token.respond_to? :render
           buffer.print token.render
         elsif token.respond_to? :to_s
           buffer.print token
         end
 
-        buffer.print " "
+
+        buffer.print seperator_between(token, @tokens.fetch(i+1, nil))
       end
 
       @io.rerender buffer.string
+    end
+
+    def seperator_between(a,b)
+      if @controller.token_separator.respond_to? :call
+        @controller.token_separator.call(a, b)
+      else
+        @controller.token_separator
+      end
     end
 
     def getc
@@ -75,12 +85,17 @@ private
     def place_cursor
       print @io.carriage_return
 
-      @tokens.each do |t|
+      @tokens.length.times do |i|
+        t = @tokens[i]
         if t == active_blank
           print @io.char_right*t.position
           break
         end
-        print @io.char_right*(Term::ANSIColor.uncolored(t).length+1) # + 1 for space
+
+        token_width = Term::ANSIColor.uncolored(t).length
+        seperator_width = seperator_between(t, @tokens.fetch(i+1,nil)).size
+
+        print @io.char_right*(token_width + seperator_width)
       end
     end
 
