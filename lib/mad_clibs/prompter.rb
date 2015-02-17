@@ -16,10 +16,15 @@ class MadClibs
       @blanks = line.instance_variable_get(:@blanks)
       @current_blank_index = 0
 
-      until done?
+      if @blanks.empty?
         render
-        place_cursor
-        getc
+        @io.read_key(false) #pause to allow Ctrl-C; continue on any other key
+      else
+        until done?
+          render
+          place_cursor
+          getc
+        end
       end
 
       post_render

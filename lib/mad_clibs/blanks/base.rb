@@ -35,6 +35,10 @@ class MadClibs
         end
       end
 
+      def to_s
+        value
+      end
+
       protected
         include Mixins::ColorHandling
         include Mixins::DefaultKeyHandling
