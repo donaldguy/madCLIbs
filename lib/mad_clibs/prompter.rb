@@ -82,6 +82,8 @@ private
       when "ctrl-c", "ctrl-d"
         continue = @controller.interrupt_handler.()
         throw :escape unless continue
+      when "\f"
+        @io.clear_screen
       else
         active_blank.key(@last_char)
       end

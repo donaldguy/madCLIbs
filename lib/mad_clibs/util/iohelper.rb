@@ -122,6 +122,10 @@ module IOHelper
     end
   end
 
+  def clear_screen
+    print `tput clear`
+  end
+
   def char_to_raw char
     KEYS.fetch char, char
   end
